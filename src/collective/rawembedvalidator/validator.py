@@ -56,6 +56,11 @@ class RawEmbedValidator(validator.SimpleFieldValidator):
             pattern = re.sub('\s+', ' ', pattern).strip()
             if re.match(pattern, value):
                 return
+
+        # TODO: se si ha il ruolo di administrator sul contesto,
+        # anzichè lanciare l'eccezione del validtore
+        # emettere uno statusmessage warning
+
         raise Invalid(_(u"embed code not accepted"))
 
 
