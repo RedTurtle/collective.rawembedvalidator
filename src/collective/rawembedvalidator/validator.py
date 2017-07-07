@@ -1,31 +1,15 @@
-
+# -*- coding: utf-8 -*-
 from plone import api
 import re
 from z3c.form import validator
 from zope.interface import Invalid
 
 from collective.rawembedvalidator import _
+from collective.rawembedvalidator.interfaces import ICollectiveRawembedvalidatorLayer
 from collective.rawembedvalidator import logger
 
-# TODO: questi andranno nel registry e gestiti
-# da un controlpanel specifico
 # TODO: definire delle macro per URL, WORD, NUMBER, ...
-'''
-PATTERNS = [
-    """
-<a class="twitter-timeline" href="https://twitter.com/[^"]+">[^<]+</a>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-""",
-
-    """
-ab
-abd
-cd ef
-
-""",
-
-]
-'''
+# in modo da semplificare la scrittura delle regexp (?)
 
 class RawEmbedValidator(validator.SimpleFieldValidator):
     """ z3c.form validator class for embed regexp """
@@ -67,6 +51,8 @@ class RawEmbedValidator(validator.SimpleFieldValidator):
 try:
     from plone.app.standardtiles.rawembed import IRawEmbedTile
     validator.WidgetValidatorDiscriminators(
-        RawEmbedValidator, field=IRawEmbedTile['html_snippet'])
+        RawEmbedValidator,
+        request=ICollectiveRawembedvalidatorLayer,
+        field=IRawEmbedTile['html_snippet'])
 except ImportError:
     logger.warning('missing plone.app.standardtiles.rawembed')
