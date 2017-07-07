@@ -19,6 +19,7 @@ class IRawEmbedValidatorSchema(Interface):
         description=_(u'TODO'),
         key_type=schema.TextLine(title=u'provider'),
         value_type=schema.Text(title=u'pattern'),
+        # TODO: move defaults to registry.xml ?
         default={
             "twitter-timeline": """
 <a class="twitter-timeline"( data-lang="[a-z]+")?( data-limit="[0-9]+")?( data-dnt="true")? href="https://twitter.com/[^"]+">[^<]+</a>
