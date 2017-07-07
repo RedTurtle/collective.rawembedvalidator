@@ -21,7 +21,11 @@ class IRawEmbedValidatorSchema(Interface):
         value_type=schema.Text(title=u'pattern'),
         default={
             "twitter-timeline": """
-<a class="twitter-timeline" href="https://twitter.com/[^"]+">[^<]+</a>
+<a class="twitter-timeline"( data-lang="[a-z]+")?( data-limit="[0-9]+")?( data-dnt="true")? href="https://twitter.com/[^"]+">[^<]+</a>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+""",
+            "twitter-grid": """
+<a class="twitter-grid"( data-lang="[a-z]+")?( data-limit="[0-9]+")?( data-dnt="true")? href="https://twitter.com/[^"]+">[^<]*</a>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 """,
         },
