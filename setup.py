@@ -45,7 +45,6 @@ setup(
     install_requires=[
         'plone.api',
         'setuptools',
-        'z3c.jbot',
     ],
     extras_require={
         'test': [

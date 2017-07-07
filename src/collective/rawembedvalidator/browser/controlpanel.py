@@ -8,6 +8,9 @@ from collective.rawembedvalidator import _
 from collective.rawembedvalidator.interfaces import IRawEmbedValidatorSchema
 
 
+# TODO: personalizzare il controlpanel per aggiungere una textarea in cui provare
+# i pattern
+
 class SettingsEditForm(RegistryEditForm):
     """
     Define form logic
